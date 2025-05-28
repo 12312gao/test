@@ -1,217 +1,75 @@
-// 全局变量
-@import './variables.scss';
-@import './mixins.scss';
+// 主题色
+$primary-color: #1890ff;
+$primary-color-hover: #40a9ff;
+$primary-color-active: #096dd9;
 
-// CSS Reset
-* {
-  box-sizing: border-box;
-}
+// 功能色
+$success-color: #52c41a;
+$warning-color: #faad14;
+$error-color: #ff4d4f;
+$info-color: #1890ff;
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
+// 文本色
+$text-color: #262626;
+$text-color-secondary: #8c8c8c;
+$text-color-inverse: #fff;
+$icon-color: #8c8c8c;
 
-// 全局样式
-body {
-  color: $text-color;
-  background-color: $bg-color;
-  line-height: 1.5;
-}
+// 背景色
+$bg-color: #fff;
+$bg-color-light: #fafafa;
+$bg-color-base: #f5f5f5;
 
-// 链接样式
-a {
-  color: $primary-color;
-  text-decoration: none;
-  transition: color 0.3s;
+// 边框色
+$border-color: #d9d9d9;
+$border-color-light: #e8e8e8;
+$border-color-dark: #bfbfbf;
 
-  &:hover {
-    color: $primary-color-hover;
-  }
-}
+// 阴影
+$shadow-1: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-2: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-3: 0 8px 24px rgba(0, 0, 0, 0.1);
 
-// 按钮样式增强
-.ant-btn {
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  
-  &:not(.ant-btn-primary):not(.ant-btn-danger) {
-    &:hover {
-      color: $primary-color;
-      border-color: $primary-color;
-    }
-  }
-}
+// 圆角
+$border-radius-sm: 2px;
+$border-radius-base: 4px;
+$border-radius-lg: 8px;
 
-// 卡片样式增强
-.ant-card {
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s;
+// 间距
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
 
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-}
+// 字体
+$font-size-sm: 12px;
+$font-size-base: 14px;
+$font-size-lg: 16px;
+$font-size-xl: 20px;
+$font-size-xxl: 24px;
 
-// 表单样式增强
-.ant-form-item {
-  margin-bottom: 20px;
-}
+// 行高
+$line-height-base: 1.5;
+$line-height-lg: 1.8;
 
-// 模态框样式增强
-.ant-modal {
-  .ant-modal-content {
-    border-radius: 8px;
-  }
-}
+// 动画
+$transition-base: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+$transition-fast: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-// 消息提示样式增强
-.ant-message {
-  .ant-message-notice-content {
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-}
+// 断点
+$screen-xs: 480px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1600px;
 
-// 标签样式增强
-.ant-tag {
-  border-radius: 4px;
-  padding: 0 8px;
-  
-  &.ant-tag-checkable {
-    cursor: pointer;
-    transition: all 0.3s;
-    
-    &:hover {
-      opacity: 0.85;
-    }
-  }
-}
-
-// 分页样式增强
-.ant-pagination {
-  .ant-pagination-item {
-    border-radius: 4px;
-    
-    &:hover {
-      border-color: $primary-color;
-      
-      a {
-        color: $primary-color;
-      }
-    }
-    
-    &.ant-pagination-item-active {
-      background-color: $primary-color;
-      border-color: $primary-color;
-      
-      a {
-        color: #fff;
-      }
-    }
-  }
-}
-
-// 下拉菜单样式增强
-.ant-dropdown-menu {
-  border-radius: 4px;
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-    0 6px 16px 0 rgba(0, 0, 0, 0.08),
-    0 9px 28px 8px rgba(0, 0, 0, 0.05);
-}
-
-// 加载动画
-.loading-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  min-height: 200px;
-}
-
-// 淡入动画
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeIn 0.3s ease-out;
-}
-
-// 响应式布局
-@media (max-width: 768px) {
-  .hide-mobile {
-    display: none !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .show-mobile {
-    display: none !important;
-  }
-}
-
-// 工具类
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.mt-1 { margin-top: 8px; }
-.mt-2 { margin-top: 16px; }
-.mt-3 { margin-top: 24px; }
-.mt-4 { margin-top: 32px; }
-
-.mb-1 { margin-bottom: 8px; }
-.mb-2 { margin-bottom: 16px; }
-.mb-3 { margin-bottom: 24px; }
-.mb-4 { margin-bottom: 32px; }
-
-.p-1 { padding: 8px; }
-.p-2 { padding: 16px; }
-.p-3 { padding: 24px; }
-.p-4 { padding: 32px; }
-
-// 深色主题支持
-[data-theme='dark'] {
-  body {
-    color: #fff;
-    background-color: #141414;
-  }
-
-  .ant-card {
-    background: #1f1f1f;
-    border-color: #303030;
-  }
-
-  .ant-input,
-  .ant-select-selector {
-    background: #1f1f1f;
-    border-color: #303030;
-    color: #fff;
-  }
-
-  .ant-btn {
-    background: #1f1f1f;
-    border-color: #303030;
-    color: #fff;
-
-    &:hover {
-      background: #303030;
-      border-color: #434343;
-    }
-  }
-}
+// Z-index
+$zindex-dropdown: 1050;
+$zindex-sticky: 1020;
+$zindex-fixed: 1030;
+$zindex-modal-backdrop: 1040;
+$zindex-modal: 1050;
+$zindex-popover: 1060;
+$zindex-tooltip: 1070;
