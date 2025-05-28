@@ -1,0 +1,143 @@
+// 清除浮动
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// 文本省略
+@mixin text-ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// Flex 布局
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// 渐变背景
+@mixin gradient-bg($start-color, $end-color, $deg: 135deg) {
+  background: linear-gradient($deg, $start-color 0%, $end-color 100%);
+}
+
+// 卡片样式
+@mixin card($padding: $spacing-lg, $radius: $border-radius-base) {
+  background: $bg-color;
+  border-radius: $radius;
+  padding: $padding;
+  box-shadow: $shadow-1;
+  transition: $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-2;
+  }
+}
+
+// 按钮样式
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:hover {
+    color: $color;
+    background-color: lighten($background, 10%);
+    border-color: lighten($border, 10%);
+  }
+
+  &:active {
+    color: $color;
+    background-color: darken($background, 10%);
+    border-color: darken($border, 10%);
+  }
+
+  &:disabled {
+    color: rgba($color, 0.6);
+    background-color: rgba($background, 0.6);
+    border-color: rgba($border, 0.6);
+    cursor: not-allowed;
+  }
+}
+
+// 响应式
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (max-width: $screen-xs) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @media (max-width: $screen-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: $screen-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: $screen-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: $screen-xl) {
+      @content;
+    }
+  }
+}
+
+// 滚动条样式
+@mixin scrollbar($width: 8px, $track-color: #f1f1f1, $thumb-color: #c1c1c1) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: $width / 2;
+
+    &:hover {
+      background: darken($thumb-color, 10%);
+    }
+  }
+}
+
+// 加载动画
+@mixin loading-spinner($size: 40px, $color: $primary-color) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+  border: 3px solid rgba($color, 0.3);
+  border-radius: 50%;
+  border-top-color: $color;
+  animation: spin 1s ease-in-out infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
